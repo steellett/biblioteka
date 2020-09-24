@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <title>Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="map" style="height: 100vh; width: 100%"></div>
+    <div class="control-element">
+        <div class="control-element__layers">
+            <div class="first-layer">
+                <p>Первый этаж</p>
+                <select name="" id="first-layer__rooms">
+                    <option value="Выберите помещение"
+                            disabled></option>
+                </select>
+            </div>
+            <div class="second-layer">
+                <p>Второй этаж</p>
+                <select name="" id="second-layer__rooms">
+
+                </select>
+            </div>
+        </div>
+        <div class="input-field search-place">
+            <label for="">Поиск места</label>
+            <input type="text" placeholder="Введите место">
+            <button class="search-place__button">Поиск</button>
+        </div>
+        <div class="input-field find-books-block">
+            <label for="">Поиск книги</label>
+            <input class="found-books-text" type="text" placeholder="Введите название книги">
+            <button class="find-books-block__button">Поиск</button>
+            <ul class="found-books"></ul>
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+
+</html>
