@@ -15,7 +15,6 @@ window.onload = () => {
     let layerOne = L.imageOverlay(layerOneImg, LayerOneBounds).addTo(map);
     let layerTwo = L.imageOverlay(layerTwoImg, LayerTwoBounds).addTo(map);
 
-    let coordinateX, coordinateY;
 
     let roomsFloorOne = {
         roomOne: {
@@ -63,12 +62,15 @@ window.onload = () => {
     };
     let bookCases = [{
         coordinates: [0.000100, 0.000060],
+        floor: 2,
         books: ['Война и мир. Л. Н. Толстой', 'Так говорил заратустра. Ф. Ницше']
     }, {
         coordinates: [0.000110, 0.000250],
+        floor: 2,
         books: ['Бытие и время. М. Хайдеггер', 'Я и ОНО. З. Фрейд']
     }, {
         coordinates: [0.000080, 0.000130],
+        floor: 2,
         books: ['Государство. Платон', 'Наука логики. Г. Гегель']
     }];
 
@@ -81,6 +83,7 @@ window.onload = () => {
                 if (findtext.test(book)) {
                     booklist.innerHTML = book;
                     booklist.dataset.coordinates = bookCase.coordinates;
+                    booklist.dataset.floor = bookCase.floor;
                     document.querySelector('.found-books').append(booklist)
                 };
             })
@@ -97,10 +100,10 @@ window.onload = () => {
     };
 
     function chooseLayer(chosenLayer) {
-        if (chosenLayer === 1) {
+        if (chosenLayer == 1) {
             layerOne.setOpacity(1)
             layerTwo.setOpacity(0)
-        } else if (chosenLayer === 2) {
+        } else if (chosenLayer == 2) {
             layerOne.setOpacity(0)
             layerTwo.setOpacity(1)
         }
@@ -184,6 +187,7 @@ window.onload = () => {
         if (event.target.tagName == 'LI') {
             event.target.closest('.find-books-block').querySelector('input').value = event.target.innerHTML;
             event.target.closest('.find-books-block').querySelector('input').dataset.coordinates = event.target.dataset.coordinates;
+            chooseLayer(event.target.dataset.floor);
             showWhereBook();
             document.querySelector('.found-books').innerHTML = '';
 
